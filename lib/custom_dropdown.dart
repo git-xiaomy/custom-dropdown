@@ -41,6 +41,7 @@ class CustomDropdown extends StatefulWidget {
   final bool? canCloseOutsideBounds;
   final bool? hideSelectedFieldWhenOpen;
   final Future<List<String>> Function(String)? futureRequest;
+  final Color? bgColor;
 
   //duration after which the 'futureRequest' is to be executed
   final Duration? futureRequestDelay;
@@ -68,7 +69,7 @@ class CustomDropdown extends StatefulWidget {
     this.fieldSuffixIcon,
     this.onChanged,
     this.excludeSelected = true,
-    this.fillColor = Colors.white,
+    this.fillColor = Colors.white, this.bgColor,
   })  : assert(items!.isNotEmpty, 'Items list must contain at least one item.'),
         assert(
           controller.text.isEmpty || items!.contains(controller.text),
@@ -106,7 +107,7 @@ class CustomDropdown extends StatefulWidget {
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenOpen = false,
-    this.fillColor = Colors.white,
+    this.fillColor = Colors.white, this.bgColor,
   })  : assert(items!.isNotEmpty, 'Items list must contain at least one item.'),
         assert(
           controller.text.isEmpty || items!.contains(controller.text),
@@ -144,7 +145,7 @@ class CustomDropdown extends StatefulWidget {
     this.excludeSelected = true,
     this.canCloseOutsideBounds = true,
     this.hideSelectedFieldWhenOpen = false,
-    this.fillColor = Colors.white,
+    this.fillColor = Colors.white, this.bgColor,
   })  : assert(
           (listItemBuilder == null && listItemStyle == null) ||
               (listItemBuilder == null && listItemStyle != null) ||
@@ -182,6 +183,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
     return _OverlayBuilder(
       overlay: (size, hideCallback) {
         return _DropdownOverlay(
+          bgColor: widget.bgColor,
           items: widget.items ?? [],
           controller: widget.controller,
           size: size,

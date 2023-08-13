@@ -28,6 +28,8 @@ class _DropdownOverlay extends StatefulWidget {
 
   final _ListItemBuilder? listItemBuilder;
 
+  final Color? bgColor;
+
   const _DropdownOverlay({
     Key? key,
     required this.items,
@@ -36,6 +38,7 @@ class _DropdownOverlay extends StatefulWidget {
     required this.layerLink,
     required this.hideOverlay,
     required this.hintText,
+    this.bgColor,
     this.headerStyle,
     this.listItemStyle,
     this.excludeSelected,
@@ -45,6 +48,7 @@ class _DropdownOverlay extends StatefulWidget {
     this.futureRequest,
     this.futureRequestDelay,
     this.listItemBuilder,
+
   }) : super(key: key);
 
   @override
@@ -177,7 +181,7 @@ class _DropdownOverlayState extends State<_DropdownOverlay> {
               padding: _overlayOuterPadding,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: widget.bgColor != null ? widget.bgColor : Colors.white,
                   borderRadius: borderRadius,
                   boxShadow: [
                     BoxShadow(

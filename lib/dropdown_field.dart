@@ -107,6 +107,7 @@ class _DropDownFieldState extends State<_DropDownField> {
       onChanged: widget.onChanged,
       style: widget.style,
       decoration: InputDecoration(
+
         isDense: true,
         contentPadding: _contentPadding,
         suffixIcon: widget.suffixIcon ?? _textFieldIcon,
